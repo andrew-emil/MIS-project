@@ -5,6 +5,7 @@ import { Doctor } from "./entity/Doctor";
 import { Hospital } from "./entity/Hospital";
 import { Surgery } from "./entity/Surgeries";
 import { MongoRepository } from "typeorm";
+import { ObjectId } from "mongodb";
 
 const router = Router();
 
@@ -16,11 +17,43 @@ router.post("/:collection", async (req: Request, res: Response) => {
 		const data = req.body;
 
 		const repo = getRepository(collection);
+		if (collection === "doctors") {
+			data.hospitalId = new ObjectId(data.hospitalId as string);
+		} else if (collection === "surgeries") {
+			data.surgeonId = new ObjectId(data.surgeonId as string);
+			data.patientId = new ObjectId(data.patientId as string);
+		}
+
+		const result = await repo.insertOne(data);
+
+		res.status(201).json(result);
+	} catch (error) {
+		res.status(500).json({ error: error });
+	}
+});
+
+router.post("/many/:collection", async (req: Request, res: Response) => {
+	try {
+		const collection = req.params.collection as CollectionType;
+		const data: any[] = req.body;
+
+		const repo = getRepository(collection);
+
+		data.map((doc) => {
+			if (collection === "doctors") {
+				doc.hospitalId = new ObjectId(doc.hospitalId as string);
+			} else if (collection === "surgeries") {
+				doc.surgeonId = new ObjectId(doc.surgeonId as string);
+				doc.patientId = new ObjectId(doc.patientId as string);
+			}
+			return doc;
+		});
+
 		const result = await repo.insertMany(data);
 
 		res.status(201).json(result);
 	} catch (error) {
-		res.status(500).json({ error: error.message });
+		res.status(500).json({ error: error });
 	}
 });
 

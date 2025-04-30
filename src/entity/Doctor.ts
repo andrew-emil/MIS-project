@@ -1,5 +1,5 @@
-import { Entity, Column, ObjectIdColumn } from "typeorm";
-import { ObjectId } from "mongodb";
+import { Entity, Column,ObjectId, ObjectIdColumn } from "typeorm";
+
 
 @Entity("doctors")
 export class Doctor {
@@ -18,6 +18,6 @@ export class Doctor {
 	@Column({ type: "string" })
 	hospitalId: ObjectId;
 
-	@Column({type: 'simple-array'})
-	successRate: number[]
+	@Column({ type: "simple-array" })
+	successRate: number[];
 }
