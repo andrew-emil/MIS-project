@@ -1,0 +1,61 @@
+mongod --dbpath "E:/mongo data/data"
+
+7.
+db.hospitals.insertOne({
+  "name": "City Hospital",
+  "location": "Cairo",
+  "resourceMetadata": {
+    "operatingRooms": 12,
+    "avgUtilization": 78.5
+  }
+});
+
+8.
+db.hospitals.insertOne({
+  name: "Alexandria Hospital",
+  location: "Alex",
+  resourceMetadata: { operatingRooms: 12, avgUtilization: 78.5 },
+  departments: [
+    { name: "Cardiology",   floor: 2, head: "Dr. Smith" },
+    { name: "Orthopedics",  floor: 3, head: "Dr. Lee" },
+    { name: "Emergency",    floor: 1, head: "Dr. Patel" }
+  ]
+});
+
+9.
+db.hospitals.aggregate([
+  {
+    $lookup: {
+      from: "departments",
+      localField: "_id",
+      foreignField: "hospitalId",
+      as: "departments"
+    }
+  },
+  {
+    $project: {
+      name: 1,
+      location: 1,
+      "departments.name": 1,
+      "departments.floor": 1
+    }
+  }
+]);
+
+10.
+db.surgeries.aggregate([
+	{
+	 $group:{
+		_id: null,
+		totalSurgeries: { $count: {} }
+	}
+}	
+])
+
+11. 12.
+db.surgeries.aggregate([
+  { $match: { "duration": {$gte: 50 } } },
+  { $project: { duration: 1, procedureType: 1 } },
+  { $sort: { duration: 1 } },
+  { $limit: 2 }
+])
