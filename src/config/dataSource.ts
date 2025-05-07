@@ -7,7 +7,7 @@ import { Surgery } from "../entity/Surgeries";
 export const AppDataSource = new DataSource({
 	type: "mongodb",
 	host: "localhost",
-	port: 27017,
+	port: 27018,
 	database: "hospital",
 	entities: [Patient, Doctor, Hospital, Surgery],
 	synchronize: true,
