@@ -1,0 +1,71 @@
+//add patinets
+
+[
+  {
+    "name": "James Smith",
+    "age": 45,
+    "email": "james.smith@example.com",
+    "comorbidities": ["hypertension", "arthritis"],
+    "address": { "street": "Second Street", "city": "New York" }
+  },
+  {
+    "name": "Emma Brown",
+    "age": 28,
+    "email": "emma.brown@example.com",
+    "comorbidities": ["none"],
+    "address": { "street": "Willow Street", "city": "Chicago" }
+  }
+]
+
+//add doctors
+
+[
+  {
+    "name": "Dr. Olivia Patel",
+    "experienceYears": 7,
+    "specialty": "Dermatology",
+    "hospitalId": "6810fd82670aae16f3f56088",
+    "successRates": [91, 89, 94]
+  },
+  {
+    "name": "Dr. Olivie Pate",
+    "experienceYears": 7,
+    "specialty": "Dermatology",
+    "hospitalId": "6810fd82670aae16f3f56088",
+    "successRates": [91, 89, 94]
+  }
+]
+
+//add Hospital
+
+{
+  "name": "Sunrise Regional Hospital",
+  "location": "Sydney",
+  "resourceMetadata": {
+    "operatingRooms": 9,
+    "avgUtilization": 77.4
+  }
+}
+
+
+
+//add Surgery
+
+[
+  {
+    "type": "Bypass Surgery",
+    "date": "2024-11-15T09:00:00Z",
+    "surgeonId": "6811026d1505dcf95283fd86",
+    "patientId": "681100ad670aae16f3f56091",
+    "success": true,
+    "durationMinutes": 180
+  },
+  {
+    "type": "Knee Replacement",
+    "date": "2024-12-01T13:30:00Z",
+    "surgeonId": "6811026d1505dcf95283fd87",
+    "patientId": "6810c371acf2af7f22104302",
+    "success": false,
+    "durationMinutes": 120
+  }
+]
