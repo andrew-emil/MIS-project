@@ -13,11 +13,9 @@ const port: number = parseInt(process.env.PORT as string) || 4000;
 
 // Apply CORS middleware before any routes
 app.use(cors({
-  origin: "http://localhost:5173",  // Allow React app URL (modify if needed)
-  methods: ["GET", "POST", "PUT", "DELETE"],  // Allowed methods
-  allowedHeaders: ["Content-Type", "Authorization"],  // Allowed headers
-  credentials: true,  // Allow credentials (cookies, etc.)
-}));
+	origin: '*',
+	credentials: true,
+  }));
 
 app.use(express.json());
 app.use("/api", router);
