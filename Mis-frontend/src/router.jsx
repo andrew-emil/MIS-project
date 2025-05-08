@@ -12,6 +12,9 @@ import DeletePatient from "./views/deletePatient";
 import DeleteHospital from "./views/deleteHospital";
 import DeleteSurgery from "./views/deleteSurgery";
 import DeleteDoctor from "./views/deleteDoctor";
+import BatchUpdateOperations from "./views/batchOperation";
+import AggregateOperations from "./views/aggregate";
+import ArraySumCalculator from "./views/arraySum";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +34,10 @@ const router = createBrowserRouter([
       { path: "/add-surgery", element: <AddSurgery /> },
       { path: "/update-surgery", element: <UpdateSurgery /> },
       { path: "/delete-surgery", element: <DeleteSurgery /> },
+
+      { path: "/batch", element: <BatchUpdateOperations /> },
+      { path: "/aggregate", element: <AggregateOperations /> },
+      { path: "/array-sum", element: <ArraySumCalculator /> },
     ],
   },
 ]);
