@@ -8,6 +8,10 @@ import UpdateDoctor from "./views/updateDoctor";
 import UpdatePatient from "./views/updatePatient";
 import UpdateHospital from "./views/updateHospital";
 import UpdateSurgery from "./views/updateSurgery";
+import DeletePatient from "./views/deletePatient";
+import DeleteHospital from "./views/deleteHospital";
+import DeleteSurgery from "./views/deleteSurgery";
+import DeleteDoctor from "./views/deleteDoctor";
 
 const router = createBrowserRouter([
   {
@@ -17,12 +21,16 @@ const router = createBrowserRouter([
       { path: "/", element: <AddPatient /> },
       { path: "/add-patient", element: <AddPatient /> },
       { path: "/update-patient", element: <UpdatePatient /> },
+      { path: "/delete-patient", element: <DeletePatient /> },
       { path: "/add-doctor", element: <AddDoctor /> },
       { path: "/update-doctor", element: <UpdateDoctor /> },
+      { path: "/delete-doctor", element: <DeleteDoctor /> },
       { path: "/add-hospital", element: <AddHospital /> },
       { path: "/update-hospital", element: <UpdateHospital /> },
+      { path: "/delete-hospital", element: <DeleteHospital /> },
       { path: "/add-surgery", element: <AddSurgery /> },
       { path: "/update-surgery", element: <UpdateSurgery /> },
+      { path: "/delete-surgery", element: <DeleteSurgery /> },
     ],
   },
 ]);
